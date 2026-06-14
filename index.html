@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Día de los Muertos Ofrenda Builder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌼 Ofrenda Builder 🌼</h1>
+            <p class="subtitle">Customize your Día de los Muertos ofrenda</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Element Selection Menu -->
+            <aside class="element-menu">
+                <h2>Select Elements</h2>
+                <div class="element-categories">
+                    <!-- Photoframes -->
+                    <div class="category">
+                        <div class="category-header" data-category="photoframes">
+                            <span class="category-title">📷 Photoframes</span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <p class="category-description">Decorative frames to place photos and loved ones on the altar.</p>
+                        <div class="options hidden" id="photoframes-options">
+                            <div class="option-item" data-type="photoframes" data-id="pf1">
+                                <div class="option-preview" draggable="true"><img src="images/photoframes/Untitled6_20260614094131.png" alt="Vintage gold frame"></div>
+                                <span>Vintage gold frame</span>
+                            </div>
+                            <div class="option-item" data-type="photoframes" data-id="pf2">
+                                <div class="option-preview" draggable="true"><img src="images/photoframes/Untitled6_20260614094625.png" alt="Colourful large frame"></div>
+                                <span>Colourful large frame</span>
+                            </div>
+                            <div class="option-item" data-type="photoframes" data-id="pf3">
+                                <div class="option-preview" draggable="true"><img src="images/photoframes/Untitled6_20260614094737.png" alt="Silver frame"></div>
+                                <span>Silver frame</span>
+                            </div>
+                            <div class="option-item" data-type="photoframes" data-id="pf4">
+                                <div class="option-preview" draggable="true"><img src="images/photoframes/Untitled6_20260614094819.png" alt="Colorful painted frame"></div>
+                                <span>Colorful painted frame</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Marigolds -->
+                    <div class="category">
+                        <div class="category-header" data-category="marigolds">
+                            <span class="category-title">🌼 Marigolds</span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <p class="category-description">It is believed that marigolds have scents that guide the souls of the dead to the altars.</p>
+                        <div class="options hidden" id="marigolds-options">
+                            <div class="option-item" data-type="marigolds" data-id="mg1">
+                                <div class="option-preview" draggable="true"><img src="images/marigolds/Untitled6_20260614100725.png" alt="Bright Yellow Bunch"></div>
+                                <span>Bright Yellow Bunch</span>
+                            </div>
+                            <div class="option-item" data-type="marigolds" data-id="mg2">
+                                <div class="option-preview" draggable="true"><img src="images/marigolds/Untitled6_20260614100754.png" alt="Orange Petals"></div>
+                                <span>Orange Petals</span>
+                            </div>
+                            <div class="option-item" data-type="marigolds" data-id="mg3">
+                                <div class="option-preview" draggable="true"><img src="images/marigolds/Untitled6_20260614100804.png" alt="Dark orange petals"></div>
+                                <span>Dark orange petals</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calaveras -->
+                    <div class="category">
+                        <div class="category-header" data-category="calaveras">
+                            <span class="category-title">💀 Calaveras</span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <p class="category-description">Colorful skull designs to honor and decorate the ofrenda.</p>
+                        <div class="options hidden" id="calaveras-options">
+                            <div class="option-item" data-type="calaveras" data-id="cv1">
+                                <div class="option-preview" draggable="true"><img src="images/calaveras/Untitled2_20260611215113.png" alt="Heart-eyed calavera"></div>
+                                <span>Heart-eyed skull calavera</span>
+                            </div>
+                            <div class="option-item" data-type="calaveras" data-id="cv2">
+                                <div class="option-preview" draggable="true"><img src="images/calaveras/Untitled2_20260612095904.png" alt="Orange flower-eyed calavera"></div>
+                                <span>Orange flower-eyed calavera</span>
+                            </div>
+                            <div class="option-item" data-type="calaveras" data-id="cv3">
+                                <div class="option-preview" draggable="true"><img src="images/calaveras/Untitled2_20260613141754.png" alt="Purple flowered calavera"></div>
+                                <span>Purple flowered calavera</span>
+                            </div>
+                            <div class="option-item" data-type="calaveras" data-id="cv4">
+                                <div class="option-preview" draggable="true"><img src="images/calaveras/Untitled3_20260611214739.png" alt="Colourful white calavera"></div>
+                                <span>Colourful white calavera</span>
+                            </div>
+                            <div class="option-item" data-type="calaveras" data-id="cv5">
+                                <div class="option-preview" draggable="true"><img src="images/calaveras/Untitled5_20260611215412.png" alt="Dark calavera"></div>
+                                <span>Dark calavera</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paper Decorations -->
+                    <div class="category">
+                        <div class="category-header" data-category="paper-decorations">
+                            <span class="category-title">🎨 Paper Decorations</span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <p class="category-description">Acts as a bridge between the living and the dead.</p>
+                        <div class="options hidden" id="paper-decorations-options">
+                            <div class="option-item" data-type="paper-decorations" data-id="pd1">
+                                <div class="option-preview" draggable="true"><img src="images/paper-decorations/Untitled6_20260613210009.png" alt="Papel Picado 1"></div>
+                                <span>Papel Picado 1</span>
+                            </div>
+                            <div class="option-item" data-type="paper-decorations" data-id="pd2">
+                                <div class="option-preview" draggable="true"><img src="images/paper-decorations/Untitled6_20260613210943.png" alt="Papel Picado 2"></div>
+                                <span>Papel Picado 2</span>
+                            </div>
+                            <div class="option-item" data-type="paper-decorations" data-id="pd3">
+                                <div class="option-preview" draggable="true"><img src="images/paper-decorations/Untitled6_20260613211234.png" alt="Papel Picado 3"></div>
+                                <span>Papel Picado 3</span>
+                            </div>
+                            <div class="option-item" data-type="paper-decorations" data-id="pd4">
+                                <div class="option-preview" draggable="true"><img src="images/paper-decorations/Untitled6_20260613211502.png" alt="Papel Picado 4"></div>
+                                <span>Papel Picado 4</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Glass of Water -->
+                    <div class="category">
+                        <div class="category-header" data-category="water">
+                            <span class="category-title">💧 Glass of Water</span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <p class="category-description">Water offerings help the souls who journey back home to quench their thirst.</p>
+                        <div class="options hidden" id="water-options">
+                            <div class="option-item" data-type="water" data-id="wt1">
+                                <div class="option-preview" draggable="true"><img src="images/water/Untitled6_20260613212307.png" alt="Crystal Glass"></div>
+                                <span>Crystal Glass</span>
+                            </div>
+                            <div class="option-item" data-type="water" data-id="wt2">
+                                <div class="option-preview" draggable="true"><img src="images/water/Untitled6_20260613213012.png" alt="Wine"></div>
+                                <span>Wine</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Food -->
+                    <div class="category">
+                        <div class="category-header" data-category="food">
+                            <span class="category-title">🍞 Food</span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <p class="category-description">A nourishing meal for the souls who come from a long journey back home.</p>
+                        <div class="options hidden" id="food-options">
+                            <div class="option-item" data-type="food" data-id="fd1">
+                                <div class="option-preview" draggable="true"><img src="images/food/Untitled2_20260613151112.png" alt="Pan de Muerto"></div>
+                                <span>Pan de Muerto</span>
+                            </div>
+                            <div class="option-item" data-type="food" data-id="fd2">
+                                <div class="option-preview" draggable="true"><img src="images/food/Untitled2_20260613174408.png" alt="Tamales Plate"></div>
+                                <span>Tamales Plate</span>
+                            </div>
+                            <div class="option-item" data-type="food" data-id="fd3">
+                                <div class="option-preview" draggable="true"><img src="images/food/Untitled2_20260613184537.png" alt="Large fruit bowl"></div>
+                                <span>Large fruit bowl</span>
+                            </div>
+                            <div class="option-item" data-type="food" data-id="fd4">
+                                <div class="option-preview" draggable="true"><img src="images/food/Untitled6_20260613184933.png" alt="Small fruit bowl"></div>
+                                <span>Small fruit bowl</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Candles -->
+                    <div class="category">
+                        <div class="category-header" data-category="candles">
+                            <span class="category-title">🕯️ Candles</span>
+                            <span class="expand-icon">▼</span>
+                        </div>
+                        <p class="category-description">Candle lights to guide loved ones to the altar.</p>
+                        <div class="options hidden" id="candles-options">
+                            <div class="option-item" data-type="candles" data-id="cd1">
+                                <div class="option-preview" draggable="true"><img src="images/candles/Untitled6_20260613195846.png" alt="Large carmine candle"></div>
+                                <span>Large carmine candle</span>
+                            </div>
+                            <div class="option-item" data-type="candles" data-id="cd2">
+                                <div class="option-preview" draggable="true"><img src="images/candles/Untitled6_20260613200051.png" alt="Small green candle"></div>
+                                <span>Small green candle</span>
+                            </div>
+                            <div class="option-item" data-type="candles" data-id="cd3">
+                                <div class="option-preview" draggable="true"><img src="images/candles/Untitled6_20260613200806.png" alt="Small blue candle"></div>
+                                <span>Small blue candle</span>
+                            </div>
+                            <div class="option-item" data-type="candles" data-id="cd4">
+                                <div class="option-preview" draggable="true"><img src="images/candles/Untitled6_20260613201449.png" alt="Large purple candle"></div>
+                                <span>Large purple candle</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Ofrenda Display Area -->
+            <main class="ofrenda-workspace">
+                <div class="ofrenda-title">Your Ofrenda</div>
+                <div class="ofrenda-container" id="ofrenda">
+                    <div class="drop-zone" id="drop-zone">
+                        <p>Drag items here to place them on your ofrenda</p>
+                    </div>
+                </div>
+                <div class="size-controls">
+                    <label for="size-slider">Item size:</label>
+                    <input type="range" id="size-slider" min="40" max="220" value="130" step="5">
+                    <span id="size-value">130px</span>
+                </div>
+                <div class="size-controls">
+                    <label for="rotate-slider">Rotate:</label>
+                    <input type="range" id="rotate-slider" min="0" max="360" value="0" step="1">
+                    <span id="rotate-value">0°</span>
+                </div>
+                <button class="clear-button" id="clear-btn">Clear Ofrenda</button>
+            </main>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

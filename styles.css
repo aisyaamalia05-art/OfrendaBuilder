@@ -1,0 +1,411 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+    background: linear-gradient(135deg, #da830a 0%, #dfac12 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 20px;
+}
+
+/* Element Menu */
+.element-menu {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    height: fit-content;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.element-menu h2 {
+    color: #764ba2;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.element-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.category {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: linear-gradient(135deg, #d3730d 0%, #f4c907 100%);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.category-header:hover {
+    background: linear-gradient(135deg, #db8c17 0%, #e8c308 100%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.category-description {
+    font-size: 0.88em;
+    color: #6b5a3d;
+    padding: 0 10px 10px 10px;
+    line-height: 1.35;
+}
+
+.category-title {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.expand-icon {
+    transition: transform 0.3s ease;
+    font-size: 0.8em;
+}
+
+.category-header[data-expanded="true"] .expand-icon {
+    transform: rotate(180deg);
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    background: #fafafa;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.options.hidden {
+    display: none;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.option-item:hover {
+    background: #fff3cd;
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.option-item.dragging {
+    opacity: 0.7;
+    background: #e8e8e8;
+}
+
+.option-preview {
+    width: 72px;
+    height: 72px;
+    min-width: 72px;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    transition: transform 0.2s ease;
+    background: #f9f9f9;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.option-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+ }
+
+.option-preview:active {
+    cursor: grabbing;
+}
+
+.option-preview:hover {
+    transform: scale(1.1);
+}
+
+.option-item span {
+    font-size: 0.9em;
+    color: #333;
+    flex: 1;
+}
+
+/* Ofrenda Workspace */
+.ofrenda-workspace {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ofrenda-title {
+    font-size: 2em;
+    color: #764ba2;
+    font-weight: bold;
+    text-align: center;
+}
+
+.ofrenda-container {
+    position: relative;
+    min-height: 500px;
+    background: linear-gradient(to bottom, #fff8dc 0%, #fffacd 100%);
+    border: 3px solid #333;
+    border-radius: 10px;
+    padding: 20px;
+    overflow: auto;
+}
+
+/* Tier Base - positioned at bottom as background */
+.ofrenda-container::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 320px;
+    background-image: 
+        /* Tier 1 (top) - small - 30% width */
+        linear-gradient(to bottom, 
+            #D4A574 0%, 
+            #C19A6B 50%, 
+            #B8860B 100%),
+        /* Tier 2 - middle - 65% width */
+        linear-gradient(to bottom,
+            #E2B680 0%,
+            #DAA520 50%,
+            #CD853F 100%),
+        /* Tier 3 (bottom) - wide - 100% width */
+        linear-gradient(to bottom,
+            #DEB887 0%,
+            #D2B48C 30%,
+            #BC8F8F 70%,
+            #8B7355 100%);
+    
+    background-size: 
+        30% 107px,
+        65% 107px,
+        100% 106px;
+    background-position: 
+        50% 0px,
+        50% 107px,
+        50% 214px;
+    background-repeat: no-repeat;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#drop-zone {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 1.2em;
+    text-align: center;
+    pointer-events: none;
+    padding: 40px;
+    z-index: 0;
+}
+
+#drop-zone.has-items {
+    display: none;
+}
+
+#ofrenda {
+    position: relative;
+    z-index: 5;
+}
+
+#ofrenda.drag-over {
+    background-color: rgba(102, 126, 234, 0.1);
+}
+
+#ofrenda.drag-over {
+    border-color: #667eea;
+    box-shadow: inset 0 0 20px rgba(102, 126, 234, 0.2);
+}
+
+.ofrenda-item {
+    position: absolute;
+    cursor: move;
+    user-select: none;
+    transition: all 0.3s ease;
+    z-index: 50;
+}
+
+.ofrenda-item:hover {
+    transform: scale(1.05);
+}
+
+.ofrenda-item.dragging {
+    opacity: 0.8;
+    z-index: 1000;
+}
+
+.ofrenda-item-icon {
+    width: 60px;
+    display: none;
+}
+
+.ofrenda-item-remove {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 700;
+    cursor: pointer;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.ofrenda-item:hover .ofrenda-item-remove,
+.ofrenda-item.dragging .ofrenda-item-remove {
+    display: flex;
+}
+
+.ofrenda-item-remove:hover {
+    color: #ffb3b3;
+}
+
+.size-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    color: #4b3a70;
+    font-weight: 600;
+}
+
+.size-controls input[type="range"] {
+    width: 180px;
+}
+
+.size-controls #size-value {
+    min-width: 50px;
+    text-align: right;
+}
+
+.clear-button {
+    align-self: center;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.clear-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.clear-button:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .element-menu {
+        max-height: 400px;
+    }
+
+    .ofrenda-container {
+        min-height: 400px;
+    }
+}
+
+/* Scrollbar Styling */
+.element-menu::-webkit-scrollbar,
+.options::-webkit-scrollbar {
+    width: 8px;
+}
+
+.element-menu::-webkit-scrollbar-track,
+.options::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.element-menu::-webkit-scrollbar-thumb,
+.options::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+.element-menu::-webkit-scrollbar-thumb:hover,
+.options::-webkit-scrollbar-thumb:hover {
+    background: #5568d3;
+}
