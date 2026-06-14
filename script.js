@@ -77,52 +77,89 @@ function initializeCategories() {
 function initializeDragAndDrop() {
     const ofrenda = document.getElementById('ofrenda');
     const dropZone = document.getElementById('drop-zone');
-    
-    // Draggable items from menu
+
     setupMenuDragListeners();
-    
-    // Drop zone
-    ofrenda.addEventListener('dragover', (e) => {
+
+    const addDragState = (e) => {
         e.preventDefault();
+        if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
         ofrenda.classList.add('drag-over');
-    });
-    
-    ofrenda.addEventListener('dragleave', () => {
+        dropZone.classList.add('drag-over');
+    };
+
+    const removeDragState = () => {
         ofrenda.classList.remove('drag-over');
-    });
-    
-    ofrenda.addEventListener('drop', (e) => {
+        dropZone.classList.remove('drag-over');
+    };
+
+    const handleDrop = (e) => {
         e.preventDefault();
-        ofrenda.classList.remove('drag-over');
-        
-        if (draggedItem) {
-            const rect = ofrenda.getBoundingClientRect();
-            let x = e.clientX - rect.left;
-            let y = e.clientY - rect.top;
-            
-            addItemToOfrenda(draggedItem, x, y);
-            draggedItem = null;
-        }
+        removeDragState();
+
+        const item = parseDraggedItem(e);
+        if (!item) return;
+
+        const rect = ofrenda.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        addItemToOfrenda(item, x, y);
+        draggedItem = null;
+    };
+
+    [ofrenda, dropZone].forEach((target) => {
+        target.addEventListener('dragover', addDragState);
+        target.addEventListener('dragleave', removeDragState);
+        target.addEventListener('drop', handleDrop);
     });
 }
 
-// Setup drag listeners for menu items
+function parseDraggedItem(e) {
+    try {
+        const json = e.dataTransfer.getData('application/json');
+        if (json) {
+            const parsed = JSON.parse(json);
+            if (parsed && parsed.type && parsed.id) return parsed;
+        }
+    } catch (err) {
+        // ignore invalid JSON
+    }
+
+    try {
+        const text = e.dataTransfer.getData('text/plain');
+        if (text) {
+            const parsed = JSON.parse(text);
+            if (parsed && parsed.type && parsed.id) return parsed;
+        }
+    } catch (err) {
+        // ignore invalid JSON
+    }
+
+    return draggedItem || null;
+}
+
 function setupMenuDragListeners() {
-    const draggables = document.querySelectorAll('.option-preview[draggable="true"]');
-    
-    draggables.forEach(preview => {
-        preview.addEventListener('dragstart', (e) => {
-            const parentItem = preview.closest('.option-item');
-            const type = parentItem.getAttribute('data-type');
-            const id = parentItem.getAttribute('data-id');
+    const draggables = document.querySelectorAll('.option-item');
+
+    draggables.forEach((item) => {
+        item.draggable = true;
+
+        item.addEventListener('dragstart', (e) => {
+            const type = item.getAttribute('data-type');
+            const id = item.getAttribute('data-id');
+
+            if (!type || !id) return;
+
             draggedItem = { type, id };
-            parentItem.classList.add('dragging');
+            item.classList.add('dragging');
+
+            e.dataTransfer.setData('application/json', JSON.stringify({ type, id }));
+            e.dataTransfer.setData('text/plain', JSON.stringify({ type, id }));
             e.dataTransfer.effectAllowed = 'copy';
         });
-        
-        preview.addEventListener('dragend', (e) => {
-            const parentItem = preview.closest('.option-item');
-            parentItem.classList.remove('dragging');
+
+        item.addEventListener('dragend', () => {
+            item.classList.remove('dragging');
         });
     });
 }
